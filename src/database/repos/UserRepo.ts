@@ -105,4 +105,9 @@ export default class AccountRepo {
     user.verificationToken = undefined;
     await user.save();
   }
+  
+  public static async getAll() {
+    const accounts = await UserModel.find();
+    return accounts.map((x) => UserHelpers.basicDetails(x));
+  }
 }

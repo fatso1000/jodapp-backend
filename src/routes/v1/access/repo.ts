@@ -58,6 +58,17 @@ export default class Repo {
     );
   }
 
+  public static refreshToken(req: Request, res: Response, next: NextFunction) {
+    const token = req.cookies.refreshToken;
+    const ipAddress = req.ip;
+    UserRepo.refreshToken({ token, ipAddress })
+      .then(({ refreshToken, ...user }) => {
+        this.setTokenCookie(res, refreshToken);
+        res.json(user);
+      })
+      .catch(next);
+  }
+
   // helper
   public static setTokenCookie(res: Response, token: string) {
     const cookieOptions: CookieOptions = {

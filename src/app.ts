@@ -27,8 +27,6 @@ app.use(cors({
 // routes
 app.use("/v1", routesV1);
 
-app.use("/", (req, res) => res.json("HOLA MUNDO")); // test route
-
 // app.use('/api-docs', )
 
 // global error handler

@@ -1,8 +1,8 @@
 import { Router } from "express";
 import Repo from "./repo";
 
-const router = Router()
+const router = Router();
 
-router.post('/basic', Repo.verifyEmailSchema, Repo.verifyEmail)
+router.post("/basic", Repo.verifyEmailSchema, Repo.verifyEmail);
 
-export default router   
+export default router;
